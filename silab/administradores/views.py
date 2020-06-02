@@ -115,10 +115,12 @@ def generar_prestamo(request):
 
         fecha=datetime.datetime.now()
 
+        aa=alumnos.objects.get(id=17231573)
+
         fecha_alta=str(fecha.day)+"/"+str(fecha.month)+"/"+str(fecha.year)
 
 
-        alta=adeudos(numeroControl=22, articulo=articulo, cantidad=1)
+        alta=adeudos(numeroControl=aa, articulo=articulo, cantidad=1)
         alta.save()
 
         return redirect("/administrador/")
