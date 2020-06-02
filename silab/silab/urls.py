@@ -26,9 +26,8 @@ urlpatterns = [
     path('logout/', logout),
     path('validar/', validar),
     path('control_escolar/', control_escolar),
-    
+
     path('administrador/', administrador),
     path('administrador/buscar/', buscar_alumno),
     path('administrador/buscar/articulo/', buscar_articulo),
-
 ]

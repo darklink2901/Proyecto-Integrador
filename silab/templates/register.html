@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h2>Registrar usuario</h2>
 
-<form method="POST">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <h2>Registrar usuario</h2>
+
+  <form method="POST">
     {{ form.as_p }}
     {{ form.as_p }}
     {% csrf_token %}
     <button type="submit">Registrar</button>
-</form>
+  </form>
 
-<hr />
+  <hr />
 
-<a href="/login">Iniciar sesión</a>
-  </body>
+  <a href="/login">Iniciar sesión</a>
+</body>
+
 </html>

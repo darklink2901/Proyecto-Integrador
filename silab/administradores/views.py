@@ -44,6 +44,6 @@ def buscar_alumno(request):
             return render(request, "administrador/index.html",{"session":request.session, "numero_control":numeroControl,"error":True})
 
 def buscar_articulo(request):
-    print("lol")
 
-    return render(request, "administrador/generar_prestamo.html",{"session":request.session})
+    # return render(request, "administrador/generar_prestamo.html",{"session":request.session})
+    return render(request, "administrador/generar_prestamo.html")

@@ -1,83 +1,27 @@
-{% load static %}
 {%extends "componentes/base.html"%}
 {%block content%}
 
 
-<script>
-  formularioActivado = new Boolean(false);
-  solisitudesActivado = new Boolean(false);
-  function agregar_buscador(){
-
-    var texto = document.getElementsByTagName("label");
-    texto[0].innerHTML = "Solisitud de material";
-
-    if(formularioActivado != true){
-      var elemento = document.createElement("input");
-      var contenido = document.createTextNode("id");
-      elemento.appendChild(contenido);
-      elemento.setAttribute("id","inputId");
-      elemento.setAttribute("placeholder","ID");
-      document.getElementById("formulario").appendChild(elemento);
-
-      var elemento = document.createElement("button");
-      var contenido = document.createTextNode("Buscar");
-      elemento.appendChild(contenido);
-      elemento.setAttribute("id","buttonBuscar");
-      document.getElementById("formulario").appendChild(elemento);
-
-      var elemento = document.createElement("button");
-      var contenido = document.createTextNode("Otro");
-      elemento.appendChild(contenido);
-      elemento.setAttribute("id","buttonOtro");
-      document.getElementById("formulario").appendChild(elemento);
-
-      formularioActivado = true;
-
-      var child = document.getElementById("tabla");
-      child.parentNode.removeChild(child);
 
 
-
-
-      solisitudesActivado = false;
-    }
-  }
-  function agregar_solisitudes(){
-
-    var texto = document.getElementsByTagName("label");
-    texto[0].innerHTML = "Historial";
-
-    if(solisitudesActivado != true){
-      var elemento = document.createElement("input");
-      var contenido = document.createTextNode("Buscar");
-      elemento.appendChild(contenido);
-      elemento.setAttribute("placeholder","historial");
-      elemento.setAttribute("id","tabla");
-      document.getElementById("solisitudes").appendChild(elemento);
-
-      solisitudesActivado = true;
-
-      var elemento = document.getElementById("inputId");
-      elemento.parentNode.removeChild(elemento);
-      var elemento = document.getElementById("buttonBuscar");
-      elemento.parentNode.removeChild(elemento);
-      var elemento = document.getElementById("buttonOtro");
-      elemento.parentNode.removeChild(elemento);
-
-
-      formularioActivado = false;
-    }
-  }
-</script>
-
-
-<div class="">
-  <div class="">
-    Nombre del alumno: {{nombre_alumno}}
+<div class="div-info">
+  <div class="info-alumno">
+    <img class="img-alumno" src="https://www.dhresource.com/0x0/f2/albu/g8/M00/8A/D5/rBVaV1vzx3WABGMKAAQpGtVm-Zk388.jpg" alt="">
+    <br>
+    <hr>
+    <br>
+    Alumno: {{nombre_alumno}}
+    <br>
     <br>
     Carrera: {{carrera}}
     <br>
-    semestre: {{semestre}}
+    <br>
+    Semestre: {{semestre}}
+  </div>
+
+  <div class="div-opcion">
+    <a class="waves-effect waves-light btn white-text" onclick="agregar_buscador();">Solisitar</a>
+    <a class="waves-effect waves-light btn white-text" onclick="agregar_solisitudes();">Entregar</a>
   </div>
 </div>
 
@@ -88,22 +32,25 @@
 
 
 
-<input type="button" name="" value="Solisitud de material" onclick="agregar_buscador();">
-<input type="button" name="" value="Entrega de material" onclick="agregar_solisitudes();">
 
-<br>
-
-<label id="parrafo1">
-
-</label>
+<div class="div-visualizar">
 
 
-<form class="" action="/administrador/buscar/articulo/" method="GET" id="formulario">
+  <div class="div-titulo">
+    <div id="accion" class="titulo" name="accion">Actividad</div>
+  </div>
 
-</form>
+  <div class="">
+    lol
+  </div>
 
-<form class="" action="index.html" method="post" id="solisitudes">
+  <form class="" action="/administrador/buscar/articulo/" method="GET" id="formulario">
 
-</form>
+  </form>
+
+  <form class="" action="index.html" method="post" id="solisitudes">
+
+  </form>
+</div>
 
 {%endblock%}
