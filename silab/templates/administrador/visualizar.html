@@ -1,0 +1,120 @@
+
+{%extends "componentes/base.html"%}
+{%block title%}Inicio{%endblock%}
+{%block content%}
+
+<script>
+
+  formularioActivado = new Boolean(false);
+  solisitudesActivado = new Boolean(false);
+
+
+  function agregar_buscador(){
+
+    // var texto = document.getElementsByTagName("accion");
+    // texto[0].innerHTML = "Solisitud de material";
+
+    if(formularioActivado != true){
+      var elemento = document.createElement("input");
+      var contenido = document.createTextNode("id");
+      elemento.appendChild(contenido);
+      elemento.setAttribute("id","inputId");
+      elemento.setAttribute("placeholder","ID");
+      document.getElementById("formulario").appendChild(elemento);
+
+      var elemento = document.createElement("button");
+      var contenido = document.createTextNode("Buscar");
+      elemento.appendChild(contenido);
+      elemento.setAttribute("id","buttonBuscar");
+      document.getElementById("formulario").appendChild(elemento);
+
+      var elemento = document.createElement("button");
+      var contenido = document.createTextNode("Otro");
+      elemento.appendChild(contenido);
+      elemento.setAttribute("id","buttonOtro");
+      document.getElementById("formulario").appendChild(elemento);
+
+      formularioActivado = true;
+
+      var child = document.getElementById("tabla");
+      child.parentNode.removeChild(child);
+
+
+
+
+      solisitudesActivado = false;
+    }
+  }
+
+
+
+  function agregar_solisitudes(){
+
+    // var texto = document.getElementsByTagName("accion");
+    // texto[0].innerHTML = "Historial";
+
+    if(solisitudesActivado != true){
+      var elemento = document.createElement("input");
+      var contenido = document.createTextNode("Buscar");
+      elemento.appendChild(contenido);
+      elemento.setAttribute("placeholder","historial");
+      elemento.setAttribute("id","tabla");
+      document.getElementById("solisitudes").appendChild(elemento);
+
+      solisitudesActivado = true;
+
+      var elemento = document.getElementById("inputId");
+      elemento.parentNode.removeChild(elemento);
+      var elemento = document.getElementById("buttonBuscar");
+      elemento.parentNode.removeChild(elemento);
+      var elemento = document.getElementById("buttonOtro");
+      elemento.parentNode.removeChild(elemento);
+
+
+      formularioActivado = false;
+    }
+  }
+
+</script>
+
+
+<div class="div-info">
+  <div class="info-alumno">
+    <img class="img-alumno" src="https://www.dhresource.com/0x0/f2/albu/g8/M00/8A/D5/rBVaV1vzx3WABGMKAAQpGtVm-Zk388.jpg" alt="">
+    <br>
+    <hr>
+    <br>
+    Alumno: {{nombre_alumno}}
+    <br>
+    <br>
+    Carrera: {{carrera}}
+    <br>
+    <br>
+    Semestre: {{semestre}}
+  </div>
+
+  <div class="div-opcion">
+    <button class="button-solisitud" type="button" onclick="agregar_buscador();" name="button" >Solisitar</button>
+    <button class="button-entrega" type="button" onclick="agregar_solisitudes();" name="button" >Entregar</button>
+  </div>
+</div>
+
+
+
+<div class="div-visualizar">
+  <div class="div-titulo">
+    <div id="accion" class="titulo" name="accion">Actividad</div>
+  </div>
+  <form class="" action="/administrador/buscar/articulo/" method="GET" id="formulario"></form>
+  <form class="" action="index.html" method="post" id="solisitudes"></form>
+</div>
+
+
+
+
+
+
+
+
+
+{%endblock%}
