@@ -30,4 +30,6 @@ urlpatterns = [
     path('administrador/', administrador),
     path('administrador/buscar/', buscar_alumno),
     path('administrador/buscar/articulo/', buscar_articulo),
+    path('administrador/buscar/articulo/generar_prestamo/', generar_prestamo),
+
 ]

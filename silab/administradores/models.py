@@ -18,7 +18,7 @@ class articulos(models.Model):
 
 class adeudos(models.Model):
     numeroControl=models.ForeignKey(alumnos, on_delete = models.CASCADE, verbose_name="Numero de control")
-    articulo=models.ForeignKey(articulos, on_delete = models.CASCADE, verbose_name="Numero de control")
+    articulo=models.ForeignKey(articulos, on_delete = models.CASCADE, verbose_name="Articulo")
     cantidad=models.IntegerField(verbose_name="Cantidad")
 
 

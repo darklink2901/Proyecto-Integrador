@@ -13,6 +13,7 @@ function agregar_buscador() {
     elemento.appendChild(contenido);
     elemento.setAttribute("id", "inputId");
     elemento.setAttribute("placeholder", "ID");
+    elemento.setAttribute("name", "id_articulo");
     document.getElementById("formulario").appendChild(elemento);
 
     var elemento = document.createElement("button");

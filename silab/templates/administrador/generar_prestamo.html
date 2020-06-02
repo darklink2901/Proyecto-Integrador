@@ -10,13 +10,13 @@
     <br>
     <hr>
     <br>
-    Alumno: {{nombre_alumno}}
+    Alumno: {{alumno.nombre}}
     <br>
     <br>
-    Carrera: {{carrera}}
+    Carrera: {{alumno.carrera}}
     <br>
     <br>
-    Semestre: {{semestre}}
+    Semestre: {{alumno.semestre}}
   </div>
 
   <div class="div-opcion">
@@ -40,17 +40,46 @@
     <div id="accion" class="titulo" name="accion">Actividad</div>
   </div>
 
-  <div class="">
-    lol
-  </div>
+
 
   <form class="" action="/administrador/buscar/articulo/" method="GET" id="formulario">
+    <input type="text" name="articulo" value="{% if id %} ptint("id"){% endif%}" placeholder="ID">
+    <button class="waves-effect waves-light btn white-text" type="button" name="button">Buscar</button>
+
+    <input type="hidden" id="custId" name="nombre_alumno" value="{{alumno.nombre}}">
+    <input type="hidden" id="custId" name="carrera" value="{{alumno.carrera}}">
+    <input type="hidden" id="custId" name="semestre" value="{{alumno.semestre}}">
+    <input type="hidden" id="custId" name="numero_control" value="{{alumno.numero_control}}">
 
   </form>
+  <button class="waves-effect waves-light btn white-text" type="button" name="button">Otro</button>
 
   <form class="" action="index.html" method="post" id="solisitudes">
 
   </form>
+
+  {% if articulo %}
+
+  Responsable: {{alumno.nombre}}
+  <br>
+  Articulo: {{articulo.nombre}}
+  <br>
+  Precio: ${{articulo.precio}}
+  <br>
+  <form class="" action="/administrador/buscar/articulo/generar_prestamo/" method="post">{% csrf_token %}
+    <button class="waves-effect waves-light btn white-text" type="submit" name="button">Generar Prestamo</button>
+
+    <input type="hidden" id="custId" name="nombre_alumno" value="{{alumno.nombre}}">
+    <input type="hidden" id="custId" name="carrera" value="{{alumno.carrera}}">
+    <input type="hidden" id="custId" name="semestre" value="{{alumno.semestre}}">
+    <input type="hidden" id="custId" name="numero_control" value="{{alumno.numero_control}}">
+    <input type="hidden" id="custId" name="nombre_articulo" value="{{articulo.nombre}}">
+  </form>
+
+
+  {% endif%}
 </div>
+
+
 
 {%endblock%}
