@@ -49,9 +49,11 @@ def validar(request):
     except:
         return redirect("/login/")
 
+
     if request.session["tipo"] == "escolares":
         return redirect("/control_escolar/")
-    else:
+    elif request.session["tipo"] == "laboratorios":
+        print("lol")
         return redirect("/administrador/")
 
     return render(request, "index.html")

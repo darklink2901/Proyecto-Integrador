@@ -109,20 +109,23 @@ def generar_prestamo(request):
     if request.method == "POST":
 
         numeroControl=request.POST["numero_control"]
-        articulo=request.POST["nombre_articulo"]
-        id_articulo=request.POST["nombre_articulo"]
+        id_articulo=request.POST["id_articulo"]
+        str(id_articulo)
+
+        fecha_actual=datetime.datetime.now()
+
+        alumno=alumnos.objects.get(id=numeroControl)
+        articulo=articulos.objects.get(id=id_articulo)
 
 
-        fecha=datetime.datetime.now()
+        # fecha_actual=str(fecha_actual.day)+"/"+str(fecha_actual.month)+"/"+str(fecha_actual.year)
 
-        aa=alumnos.objects.get(id=17231573)
+        registrar_adeudo=adeudos(numeroControl=alumno, articulo=articulo, cantidad=1)
+        registrar_adeudo.save()
 
-        fecha_alta=str(fecha.day)+"/"+str(fecha.month)+"/"+str(fecha.year)
-
-
-        alta=adeudos(numeroControl=aa, articulo=articulo, cantidad=1)
-        alta.save()
-
-        return redirect("/administrador/")
+        registrar_historial=historial(numeroControl=alumno, articulo=articulo, cantidad=1, fecha=fecha_actual )
+        registrar_historial.save()
+        # return redirect("/administrador/")
+        return redirect("/validar/")
     else:
         return redirect("/validar/")
