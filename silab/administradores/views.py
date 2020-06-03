@@ -39,9 +39,14 @@ def buscar_alumno(request):
     except:
         return redirect("/login/")
 
+
+
     if request.method == "GET":
         numeroControl=request.GET["numero_control"]
         str(numeroControl)
+
+
+
         try:
             user = alumnos.objects.get(id__exact=numeroControl)
 
@@ -50,8 +55,37 @@ def buscar_alumno(request):
                 carrera=user.carrera
                 semestre=user.semestre
                 alumno = Alumno(numeroControl, nombre, carrera, semestre)
-                print(semestre)
-                return render(request, "administrador/visualizar.html",{"session":request.session,"alumno":alumno})
+
+
+
+                ade=adeudos.objects.filter(numeroControl_id=numeroControl)
+
+
+                info_adeudo=[]
+
+                info_articulo=[]
+
+                for ades in ade:
+
+                    art=articulos.objects.get(id=ades.articulo_id)
+
+                    info_articulo.append(art)
+
+                    info_adeudo.append(ades)
+
+
+
+                print(info_adeudo)
+
+
+
+
+
+
+
+
+
+                return render(request, "administrador/visualizar.html",{"session":request.session,"alumno":alumno,"adeudos":info_adeudo, "articulo":info_articulo })
             else:
                 return redirect("/login/")
         except alumnos.DoesNotExist:
@@ -129,6 +163,29 @@ def generar_prestamo(request):
         articulo.status=True;
         articulo.save()
         # return redirect("/administrador/")
+        return redirect("/validar/")
+    else:
+        return redirect("/validar/")
+
+
+
+
+
+
+def generar_devolucion(request):
+    try:
+        if request.session["sesion"]==True and request.session["tipo"]=="laboratorios":
+            pass
+
+        else:
+            return redirect("/validar/")
+    except:
+        return redirect("/login/")
+    if request.method == "GET":
+        print("entro")
+        id_articulo=request.GET["id"]
+        art=adeudos.objects.get(articulo_id=id_articulo)
+        art.delete()
         return redirect("/validar/")
     else:
         return redirect("/validar/")

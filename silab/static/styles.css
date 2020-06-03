@@ -146,3 +146,11 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.div-prestamos{
+  display: none;
+}
+
+.div-entregas{
+  display: none;
+}
