@@ -37,7 +37,7 @@
     <div class="container mt-5">
       <div class="row ">
         <div class="col-md-12 ">
-          <h1 class="display-4 text-center"> Historial: {{alum.nombre}}</h1>
+          <h1 class="display-4 text-center"> Adeudos: {{alum.nombre}}</h1>
           <div class="tabla ">
             <table class="table " >
             <thead class="mt-4 thead-dark">
@@ -51,13 +51,12 @@
             </thead>
             <tbody>
             <!-- persona es una varibale nueva y personas es la variable del contexto -->
-            {% for historial in histori %}
+            {% for adeudos in adeud %}
             <tr>
-              <th thead-light>{{historial.articulo.area}}</th>
-              <th thead-light>{{historial.articulo.nombre}}</th>
-              <th thead-light>{{historial.cantidad}}</th>
-              <th thead-light>{{historial.fecha}}</th>
-              <th thead-light><a href="{% url 'elim_pago' historial.numeroControl %}">Generar pago</a></th>
+              <th thead-light>{{adeudos.articulo.area}}</th>
+              <th thead-light>{{adeudos.articulo.nombre}}</th>
+              <th thead-light>{{adeudos.cantidad}}</th>
+              <th thead-light><a href="{% url 'elim_pago' adeudos.articulo.id alum.id %}">Generar pago</a></th>
 
             </tr>
             {% endfor %}

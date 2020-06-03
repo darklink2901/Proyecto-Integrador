@@ -27,17 +27,20 @@ def control_escolar(request):
 def detalles_alumno(request,id):
     if request.user.is_authenticated:
         alum = alumnos.objects.get(id = id)
-        if alum.TotalPrestamos == 0 and alum.totalAdeudos == 0:
+        if  (alum.totalAdeudos == 0 and alum.TotalPrestamos == 0):
             return render(request, "contEscolar/lib.html")
         else:
             num= alum.id
-            histori = historial.objects.filter(numeroControl = num)
+            adeud = adeudos.objects.filter(numeroControl = num)
             contexto = {
                 'alum':alum,
-                'histori':histori
+                'adeud':adeud
             }
             return render(request, "contEscolar/cont.html",contexto)
 
-def elim_pago(request, num):
-    historial.objects.filter(numeroControl=num).delete()
+def elim_pago(request, id,num):
+    eliminarAdeudo =adeudos.objects.filter(articulo = id).delete()
+    alum = alumnos.objects.get(id = num)
+    alum.totalAdeudos = 0
+    alum.save()
     return redirect("/login/")
