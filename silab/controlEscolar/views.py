@@ -27,9 +27,17 @@ def control_escolar(request):
 def detalles_alumno(request,id):
     if request.user.is_authenticated:
         alum = alumnos.objects.get(id = id)
-        num= alum.id
-        histori = historial.objects.filter(numeroControl = num)
-        contexto = {
-            'histori':histori
-        }
-        return render(request, "contEscolar/cont.html",contexto)
+        if alum.TotalPrestamos == 0 and alum.totalAdeudos == 0:
+            return render(request, "contEscolar/lib.html")
+        else:
+            num= alum.id
+            histori = historial.objects.filter(numeroControl = num)
+            contexto = {
+                'alum':alum,
+                'histori':histori
+            }
+            return render(request, "contEscolar/cont.html",contexto)
+
+def elim_pago(request, num):
+    historial.objects.filter(numeroControl=num).delete()
+    return redirect("/login/")

@@ -3,14 +3,16 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>SILAB</title>
+    <title>Silab</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'styles.css' %}">
   </head>
+
   <body>
+
     <section>
     <div class="navbar-wropper">
       <nav class="navbar navbar-expand-lg navbar-light ">
@@ -34,38 +36,8 @@
       </div>
     </div>
   </section>
-    <div class="container mt-5">
-      <div class="row ">
-        <div class="col-md-12 ">
-          <h1 class="display-4 text-center"> Historial: {{alum.nombre}}</h1>
-          <div class="tabla ">
-            <table class="table " >
-            <thead class="mt-4 thead-dark">
-            <tr >
-              <th scope="col">Nom. Area</th>
-              <th scope="col">Nombre del Articulo</th>
-              <th scope="col">Cantidad</th>
-              <th scope="col">Fecha</th>
-              <th scope="col"> </th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- persona es una varibale nueva y personas es la variable del contexto -->
-            {% for historial in histori %}
-            <tr>
-              <th thead-light>{{historial.articulo.area}}</th>
-              <th thead-light>{{historial.articulo.nombre}}</th>
-              <th thead-light>{{historial.cantidad}}</th>
-              <th thead-light>{{historial.fecha}}</th>
-              <th thead-light><a href="{% url 'elim_pago' historial.numeroControl %}">Generar pago</a></th>
-
-            </tr>
-            {% endfor %}
-            </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="container">
+  <p class="display-4">No tiene ningun adeudo, alumno liberado </p>
+</div>
   </body>
 </html>
