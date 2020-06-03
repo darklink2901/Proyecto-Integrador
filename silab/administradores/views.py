@@ -125,6 +125,9 @@ def generar_prestamo(request):
 
         registrar_historial=historial(numeroControl=alumno, articulo=articulo, cantidad=1, fecha=fecha_actual )
         registrar_historial.save()
+
+        articulo.status=True;
+        articulo.save()
         # return redirect("/administrador/")
         return redirect("/validar/")
     else:
