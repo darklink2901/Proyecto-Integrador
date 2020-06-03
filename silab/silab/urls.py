@@ -25,7 +25,8 @@ urlpatterns = [
     path('login/', login),
     path('logout/', logout),
     path('validar/', validar),
-    path('control_escolar/', control_escolar),
+    path('control_escolar/', control_escolar, name='control_escolar'),
+    path('detalles_alumno/<str:id>/',detalles_alumno,name='detalles_alumno'),
 
     path('administrador/', administrador),
     path('administrador/buscar/', buscar_alumno),

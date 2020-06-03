@@ -11,3 +11,6 @@ class usuarios(models.Model):
     area=models.CharField(max_length=50, verbose_name="Area")
     email=models.EmailField(verbose_name="E-mail")
     img=models.CharField(max_length=50, verbose_name="Foto")
+
+    def __str__(self):
+        return self.usuario

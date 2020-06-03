@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'silab.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'silab',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': '127.0.0.1',
-        'DATABASE_PORT': '5432',
+        'NAME': 'rrjkyrln',
+        'USER': 'rrjkyrln',
+        'PASSWORD': 'ts_1CbU630y1vqHWrDyKTSiEkP6Go6GH',
+        'HOST': 'drona.db.elephantsql.com',
+        'PORT': '5432',
     }
 }
 
@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-mx'
 
 TIME_ZONE = 'UTC'
 
