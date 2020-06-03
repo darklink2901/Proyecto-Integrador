@@ -2,79 +2,9 @@
 {%block title%}Inicio{%endblock%}
 {%block content%}
 
-<!-- <script>
-  formularioActivado = new Boolean(false);
-  solisitudesActivado = new Boolean(false);
+<script>
 
-
-  function agregar_buscador() {
-
-    // var texto = document.getElementsByTagName("accion");
-    // texto[0].innerHTML = "Solisitud de material";
-
-    if (formularioActivado != true) {
-      var elemento = document.createElement("input");
-      var contenido = document.createTextNode("id");
-      elemento.appendChild(contenido);
-      elemento.setAttribute("id", "inputId");
-      elemento.setAttribute("placeholder", "ID");
-      document.getElementById("formulario").appendChild(elemento);
-
-      var elemento = document.createElement("button");
-      var contenido = document.createTextNode("Buscar");
-      elemento.appendChild(contenido);
-      elemento.setAttribute("id", "buttonBuscar");
-      elemento.setAttribute("class", "waves-effect waves-light btn white-text");
-      document.getElementById("formulario").appendChild(elemento);
-
-      var elemento = document.createElement("button");
-      var contenido = document.createTextNode("Otro");
-      elemento.appendChild(contenido);
-      elemento.setAttribute("id", "buttonOtro");
-      elemento.setAttribute("class", "waves-effect waves-light btn white-text");
-      document.getElementById("formulario").appendChild(elemento);
-
-      formularioActivado = true;
-
-      var child = document.getElementById("tabla");
-      child.parentNode.removeChild(child);
-
-
-
-
-      solisitudesActivado = false;
-    }
-  }
-
-
-
-  function agregar_solisitudes() {
-
-    // var texto = document.getElementsByTagName("accion");
-    // texto[0].innerHTML = "Historial";
-
-    if (solisitudesActivado != true) {
-      var elemento = document.createElement("input");
-      var contenido = document.createTextNode("Buscar");
-      elemento.appendChild(contenido);
-      elemento.setAttribute("placeholder", "historial");
-      elemento.setAttribute("id", "tabla");
-      document.getElementById("solisitudes").appendChild(elemento);
-
-      solisitudesActivado = true;
-
-      var elemento = document.getElementById("inputId");
-      elemento.parentNode.removeChild(elemento);
-      var elemento = document.getElementById("buttonBuscar");
-      elemento.parentNode.removeChild(elemento);
-      var elemento = document.getElementById("buttonOtro");
-      elemento.parentNode.removeChild(elemento);
-
-
-      formularioActivado = false;
-    }
-  }
-</script> -->
+</script>
 
 
 <div class="div-info">
@@ -93,8 +23,8 @@
   </div>
 
   <div class="div-opcion">
-    <a class="waves-effect waves-light btn white-text" onclick="agregar_buscador();">Solisitar</a>
-    <a class="waves-effect waves-light btn white-text" onclick="agregar_solisitudes();">Entregar</a>
+    <a class="waves-effect waves-light btn white-text" onclick="solisitar()"">Solisitar</a>
+    <a class=" waves-effect waves-light btn white-text" onclick="entregar();">Entregar</a>
   </div>
 </div>
 
@@ -106,16 +36,111 @@
     <div id="accion" class="titulo" name="accion">Actividad</div>
   </div>
 
-  <form class="" action="/administrador/buscar/articulo/" method="GET" id="formulario">
+  <div id="prestamos" class="div-prestamos">
+    <form class="" action="/administrador/buscar/articulo/" method="GET" id="formulario">
+      <input type="text" name="id_articulo" value="">
+      <input class="waves-effect waves-light btn white-text" type="submit" name="" value="Buscar">
+      <input type="hidden" id="custId" name="nombre_alumno" value="{{alumno.nombre}}">
+      <input type="hidden" id="custId" name="carrera" value="{{alumno.carrera}}">
+      <input type="hidden" id="custId" name="semestre" value="{{alumno.semestre}}">
+      <input type="hidden" id="custId" name="numero_control" value="{{alumno.numero_control}}">
+    </form>
+    <button class="waves-effect waves-light btn white-text" onclick="myFunction()">Otro</button>
+  </div>
+
+  <!-- <div id="entregas" class="div-historial">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+
+  <div class="div-entregas" id="entregas">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Articulo</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Entregar</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for adeudo in adeudos %}
+        <tr>
+          <th scope="row">{{adeudo.articulo_id}}</th>
+          <td>{{articulo.id}}</td>
+          <td>{{adeudo.cantidad}}</td>
+          <td>
+            <form action="/administrador/buscar/articulo/generar_devolucion/" method="GET">
+              <button type="submit" class="btn btn-info">Aceptar</button>
+              <input name="id" type="hidden" value="{{adeudo.articulo_id}}">
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- <form class="" action="/administrador/buscar/articulo/" method="GET" id="formulario">
+
+    <div id="prestamos">
+      <input type="text" name="id_articulo" value="">
+      <input class="waves-effect waves-light btn white-text" type="submit" name="" value="Buscar">
+
+    </div>
+
     <input type="hidden" id="custId" name="nombre_alumno" value="{{alumno.nombre}}">
     <input type="hidden" id="custId" name="carrera" value="{{alumno.carrera}}">
     <input type="hidden" id="custId" name="semestre" value="{{alumno.semestre}}">
     <input type="hidden" id="custId" name="numero_control" value="{{alumno.numero_control}}">
-  </form>
+  </form> -->
+
+
+
+  <div id="otro-material">
+    <!-- <button type="button" name="button">otro</button> -->
+  </div>
 
   <form class="" action="index.html" method="post" id="solisitudes">
 
   </form>
+
+  <!-- <button onclick="myFunction()">Clickeame</button> -->
+
+
+
+
+
 </div>
 
 
