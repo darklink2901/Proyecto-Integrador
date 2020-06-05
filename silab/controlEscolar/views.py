@@ -44,7 +44,7 @@ def detalles_alumno(request,id):
                 'adeud':adeud
             }
             return render(request, "contEscolar/cont.html",contexto)
-#Andres joto
+#Andres ya no eres joto
 def elim_pago(request, ad,num):
     eliminarAdeudo = adeudos.objects.filter(numeroAdeudo = ad).delete()
     alum = alumnos.objects.get(id = num)
