@@ -27,6 +27,8 @@ def administrador(request):
         return redirect("/login/")
 
 
+
+
     return render(request, "administrador/index.html",{"session":request.session})
 
 def buscar_alumno(request):
@@ -160,6 +162,9 @@ def generar_prestamo(request):
         registrar_historial=historial(numeroControl=alumno, articulo=articulo, cantidad=1, fecha=fecha_actual )
         registrar_historial.save()
 
+
+
+
         articulo.status=True;
         articulo.save()
         # return redirect("/administrador/")
@@ -181,11 +186,16 @@ def generar_devolucion(request):
             return redirect("/validar/")
     except:
         return redirect("/login/")
+
     if request.method == "GET":
         print("entro")
         id_articulo=request.GET["id"]
         art=adeudos.objects.get(articulo_id=id_articulo)
         art.delete()
+
+        articulo=articulos.objects.get(id=id_articulo)
+        articulo.status=False;
+        articulo.save()
         return redirect("/validar/")
     else:
         return redirect("/validar/")
