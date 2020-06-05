@@ -5,7 +5,13 @@
 {%block content%}
 
 
-
+<form class="" action="/administrador/agregar_articulo/" method="post">{% csrf_token %}
+  <input type="text" name="id" value="" placeholder="ID">
+  <input type="text" name="nombre" value="" placeholder="Nombre">
+  <input type="text" name="precio" value="" placeholder="Precio">
+  <input type="hidden" name="area" value="{{session.area}}">
+  <button type="submit" name="button">Agregar Articulo</button>
+</form>
 
 <div class="div.stock">
   <table class="table">

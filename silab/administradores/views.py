@@ -84,7 +84,7 @@ def buscar_alumno(request):
 
                     titulo.append(ades.articulo)
 
-                    
+
                     info_adeudo.append(ades)
 
 
@@ -216,3 +216,14 @@ def generar_devolucion(request):
         return redirect("/validar/")
     else:
         return redirect("/validar/")
+
+def agregar_articulo(request):
+    id=request.POST["id"]
+    nombre=request.POST["nombre"]
+    area=request.POST["area"]
+    precio=request.POST["precio"]
+    float(precio)
+
+    articulo=articulos(id=id, nombre=nombre, area=area, precio=precio, status=False)
+    articulo.save()
+    return redirect("/validar/")

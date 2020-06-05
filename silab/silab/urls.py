@@ -35,5 +35,5 @@ urlpatterns = [
     path('administrador/buscar/articulo/', buscar_articulo),
     path('administrador/buscar/articulo/generar_prestamo/', generar_prestamo),
     path('administrador/buscar/articulo/generar_devolucion/', generar_devolucion),
-
+    path('administrador/agregar_articulo/', agregar_articulo),
 ]
