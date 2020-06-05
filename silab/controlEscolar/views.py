@@ -29,8 +29,7 @@ def control_escolar(request):
     return render(request, "contEscolar/index0.html")
 
 def detalles_alumno(request,id):
-    if request.user.is_authenticated:
-        alum = alumnos.objects.get(id = id)
+    alum = alumnos.objects.get(id = id)
         if  (alum.totalAdeudos == 0 and alum.TotalPrestamos == 0):
             contexto = {
             'alum':alum
@@ -44,6 +43,7 @@ def detalles_alumno(request,id):
                 'adeud':adeud
             }
             return render(request, "contEscolar/cont.html",contexto)
+        
 #Andres ya no eres joto
 def elim_pago(request, ad,num):
     eliminarAdeudo = adeudos.objects.filter(numeroAdeudo = ad).delete()
