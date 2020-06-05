@@ -80,23 +80,7 @@
 
 
 
-          {% for adeudo in adeudos %}
-
-          <tr>
-            <th scope="row">{{adeudo.articulo_id}}</th>
-            <td>{{articulo.id}}</td>
-            <td>{{adeudo.cantidad}}</td>
-            <td>
-              <form action="/administrador/buscar/articulo/generar_devolucion/" method="GET">
-                <button type="submit" class="btn btn-info">Aceptar</button>
-                <input name="id" type="hidden" value="{{adeudo.articulo_id}}">
-              </form>
-            </td>
-          </tr>
-
-
-          {% endfor %}
-
+        
 
 
 
