@@ -19,6 +19,7 @@ class articulos(models.Model):
         ('laboratorio de quimica', 'Laboratorio de quimica'),
         ('laller de electronica', 'Taller de electronica'),
         ('taller de industrial', 'Taller de industrial'),
+        ('financieros', 'Financieros'),
     )
 
     id=models.CharField(primary_key = True, max_length=50, verbose_name="ID")
