@@ -57,8 +57,8 @@ def buscar_alumno(request):
                 carrera=user.carrera
                 semestre=user.semestre
                 alumno = Alumno(numeroControl, nombre, carrera, semestre)
-
-
+                alum = alumnos.objects.get(id = numeroControl)
+                adeud = adeudos.objects.filter(numeroControl = numeroControl)
 
                 ade=adeudos.objects.filter(numeroControl_id=numeroControl)
 
@@ -87,7 +87,7 @@ def buscar_alumno(request):
 
 
 
-                return render(request, "administrador/visualizar.html",{"session":request.session,"alumno":alumno,"adeudos":info_adeudo, "articulo":info_articulo })
+                return render(request, "administrador/visualizar.html",{"session":request.session,"alumno":alumno,"adeudos":info_adeudo, "articulo":info_articulo,'alum':alum,'adeud':adeud })
             else:
                 return redirect("/login/")
         except alumnos.DoesNotExist:

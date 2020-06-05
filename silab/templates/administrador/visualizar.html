@@ -92,15 +92,15 @@
         </tr>
       </thead>
       <tbody>
-        {% for adeudo in adeudos %}
+        {% for adeudos in adeud %}
         <tr>
-          <th scope="row">{{adeudo.articulo_id}}</th>
-          <td>{{articulo.id}}</td>
-          <td>{{adeudo.cantidad}}</td>
+          <th scope="row">{{adeudos.articulo.id}}</th>
+          <td>{{adeudos.articulo.nombre}}</td>
+          <td>{{adeudos.cantidad}}</td>
           <td>
             <form action="/administrador/buscar/articulo/generar_devolucion/" method="GET">
               <button type="submit" class="btn btn-info">Aceptar</button>
-              <input name="id" type="hidden" value="{{adeudo.articulo_id}}">
+              <input name="id" type="hidden" value="{{adeudos.articulo_id}}">
             </form>
           </td>
         </tr>
