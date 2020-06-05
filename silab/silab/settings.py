@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'silab.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'rrjkyrln',
-        'USER': 'rrjkyrln',
-        'PASSWORD': 'ts_1CbU630y1vqHWrDyKTSiEkP6Go6GH',
-        'HOST': 'drona.db.elephantsql.com',
+        'NAME': 'qhqngwik',
+        'USER': 'qhqngwik',
+        'PASSWORD': 'z0sytH9O7hWtcWGEyA8jBEOdduDsSEGU',
+        'HOST': 'ruby.db.elephantsql.com',
         'PORT': '5432',
     }
 }

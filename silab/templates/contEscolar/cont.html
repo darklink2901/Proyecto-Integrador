@@ -43,21 +43,23 @@
             <thead class="mt-4 thead-dark">
             <tr >
               <th scope="col">Nom. Area</th>
+              <th scope="col">Num. Adeudo</th>
               <th scope="col">Nombre del Articulo</th>
               <th scope="col">Cantidad</th>
-              <th scope="col">Fecha</th>
               <th scope="col"> </th>
+                <th scope="col"> </th>
             </tr>
             </thead>
             <tbody>
             <!-- persona es una varibale nueva y personas es la variable del contexto -->
-            {% for historial in histori %}
+            {% for adeudos in adeud %}
             <tr>
-              <th thead-light>{{historial.articulo.area}}</th>
-              <th thead-light>{{historial.articulo.nombre}}</th>
-              <th thead-light>{{historial.cantidad}}</th>
-              <th thead-light>{{historial.fecha}}</th>
-              <th thead-light><a href="{% url 'elim_pago' historial.numeroControl %}">Generar pago</a></th>
+              <th thead-light>{{adeudos.articulo.area}}</th>
+              <th thead-light>{{adeudos.numeroAdeudo}}</th>
+              <th thead-light>{{adeudos.articulo.nombre}}</th>
+              <th thead-light>{{adeudos.cantidad}}</th>
+              <th thead-light><a href="{% url 'elim_pago' adeudos.numeroAdeudo alum.id %}">Generar pago</a></th>
+              <th thead-light><a href="{% url 'elim_pago' adeudos.numeroAdeudo alum.id %}">Reponer </a></th>
 
             </tr>
             {% endfor %}
