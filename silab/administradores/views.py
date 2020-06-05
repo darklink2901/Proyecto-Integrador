@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from administradores.models import alumnos, articulos, adeudos, historial
 import datetime
+import random
 
 class Alumno():
     def __init__(self,numero_control,nombre,carrera,semestre):
@@ -28,8 +29,11 @@ def administrador(request):
 
 
 
+    art=articulos.objects.filter(area=request.session["area"])
 
-    return render(request, "administrador/index.html",{"session":request.session})
+
+
+    return render(request, "administrador/index.html",{"session":request.session, "articulo":art})
 
 def buscar_alumno(request):
 
@@ -67,17 +71,28 @@ def buscar_alumno(request):
 
                 info_articulo=[]
 
+                titulo=[]
+                print(ade)
+
                 for ades in ade:
 
                     art=articulos.objects.get(id=ades.articulo_id)
 
                     info_articulo.append(art)
 
+
+
+                    titulo.append(ades.articulo)
+
+                    
                     info_adeudo.append(ades)
 
 
 
-                print(info_adeudo)
+
+
+                # for info in info_adeudo:
+                #     print(info)
 
 
 
@@ -153,10 +168,12 @@ def generar_prestamo(request):
         alumno=alumnos.objects.get(id=numeroControl)
         articulo=articulos.objects.get(id=id_articulo)
 
+        forio=random.randrange(10000)
+
 
         # fecha_actual=str(fecha_actual.day)+"/"+str(fecha_actual.month)+"/"+str(fecha_actual.year)
 
-        registrar_adeudo=adeudos(numeroControl=alumno, articulo=articulo, cantidad=1)
+        registrar_adeudo=adeudos(numeroAdeudo=forio,numeroControl=alumno, articulo=articulo, cantidad=1)
         registrar_adeudo.save()
 
         registrar_historial=historial(numeroControl=alumno, articulo=articulo, cantidad=1, fecha=fecha_actual )
