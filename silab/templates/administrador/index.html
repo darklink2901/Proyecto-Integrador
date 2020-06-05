@@ -4,4 +4,34 @@
 
 {%block content%}
 
+
+
+
+<div class="div.stock">
+  <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for art in articulo %}
+    <tr>
+      <th scope="row">{{art.id}}</th>
+      <td>{{art.nombre}}</td>
+      <td>{{art.precio}}</td>
+      <td>{{art.status}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{{lol}}
+</div>
+
+
+
 {%endblock%}

@@ -48,38 +48,7 @@
     <button class="waves-effect waves-light btn white-text" onclick="myFunction()">Otro</button>
   </div>
 
-  <!-- <div id="entregas" class="div-historial">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
-  </div> -->
+
 
   <div class="div-entregas" id="entregas">
     <table class="table">
@@ -92,6 +61,7 @@
         </tr>
       </thead>
       <tbody>
+<<<<<<< HEAD
         {% for adeudos in adeud %}
         <tr>
           <th scope="row">{{adeudos.articulo.id}}</th>
@@ -105,6 +75,31 @@
           </td>
         </tr>
         {% endfor %}
+=======
+        {% with count=0  %}
+
+
+
+          {% for adeudo in adeudos %}
+
+          <tr>
+            <th scope="row">{{adeudo.articulo_id}}</th>
+            <td>{{articulo.id}}</td>
+            <td>{{adeudo.cantidad}}</td>
+            <td>
+              <form action="/administrador/buscar/articulo/generar_devolucion/" method="GET">
+                <button type="submit" class="btn btn-info">Aceptar</button>
+                <input name="id" type="hidden" value="{{adeudo.articulo_id}}">
+              </form>
+            </td>
+          </tr>
+          {{ count|add:"1" }}
+          {{count}}
+          {% endfor %}
+        {% endwith %}
+
+
+>>>>>>> 493945b17b3244189f8e6c1c075500ee33ea3be5
 
 
       </tbody>

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from login.models import usuarios
 
+from administradores.models import articulos
 
 def login(request):
 
@@ -53,7 +54,12 @@ def validar(request):
     if request.session["tipo"] == "escolares":
         return redirect("/control_escolar/")
     elif request.session["tipo"] == "laboratorios":
-        print("lol")
+
+
+        # art=articulos.objects.filter(area=request.session["area"])
+
+
+
         return redirect("/administrador/")
 
     return render(request, "index.html")

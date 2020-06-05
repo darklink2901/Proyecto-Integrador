@@ -12,9 +12,18 @@ class alumnos(models.Model):
         return str(self.id)
 
 class articulos(models.Model):
+
+    AREA = (
+        ('biblioteca', 'Biblioteca'),
+        ('laboratorio de computo', 'Laboratorio de computo'),
+        ('laboratorio de quimica', 'Laboratorio de quimica'),
+        ('laller de electronica', 'Taller de electronica'),
+        ('taller de industrial', 'Taller de industrial'),
+    )
+
     id=models.CharField(primary_key = True, max_length=50, verbose_name="ID")
     nombre=models.CharField(max_length=50, verbose_name="Nombre Articulo")
-    area=models.CharField(max_length=30, verbose_name="Area")
+    area=models.CharField(max_length=30, verbose_name="Area", choices=AREA)
     precio=models.FloatField(verbose_name="Precio")
     status=models.BooleanField(default=False, verbose_name="Status")
 
