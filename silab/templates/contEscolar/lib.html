@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="{% static 'styles.css' %}">
   </head>
 
@@ -36,8 +35,16 @@
       </div>
     </div>
   </section>
-<div class="container">
-  <p class="display-4">No tiene ningun adeudo, alumno liberado </p>
-</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <br>
+        <a href="{% url 'documento' alum.id %}" class="btn btn-success">Imprimir liberacion</a>
+    </div>
+    <div class="col-md-9 ">
+      <p style="font-size:45px;">El alumno {{alum.nombre}} no tiene adeudos</p>
+    </div>
+  </div>
+  </div>
   </body>
 </html>
